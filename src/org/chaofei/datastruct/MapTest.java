@@ -1,10 +1,15 @@
 package org.chaofei.datastruct;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.TreeMap;
 import java.util.UUID;
@@ -22,7 +27,8 @@ public class MapTest {
 	public static void main(String[] args) {
 //		testAllMapRW();
 //		testInitMap();
-		testTraversal();
+//		testTraversal();
+		testMapSort();
 	}
 
 	private static void testAllMapRW() {
@@ -198,5 +204,91 @@ public class MapTest {
 		}
 		end = System.currentTimeMillis();
 		System.out.println("迭代器,entrySet迭代 -> " + (end - start) + " ms");
+	}
+	
+	public static void testMapSort() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("a", "c");
+		map.put("b", "b");
+		map.put("c", "a");
+		List<Map.Entry<String, String>> list = new ArrayList<Map.Entry<String, String>>(map.entrySet());
+		// 通过比较器实现比较排序
+		Collections.sort(list, new Comparator<Map.Entry<String, String>>() {
+			@Override
+			public int compare(Entry<String, String> o1, Entry<String, String> o2) {
+				return o1.getKey().compareTo(o2.getKey());
+			}
+		});
+		
+		for (Map.Entry<String, String> mapping : list) {
+			System.out.println(mapping.getKey() + " : " + mapping.getValue());
+		}
+		
+		System.out.println("==============================");
+		// TreeMap默认按key进行升序排序，如果想改变默认的顺序，可以使用比较器:
+		map = new TreeMap<String, String>(new Comparator<String>() {
+			@Override
+			public int compare(String o1, String o2) {
+				return o2.compareTo(o1);
+			}
+		});
+		map.put("a", "c");
+		map.put("b", "b");
+		map.put("c", "a");
+		
+		for (String key : map.keySet()) {
+			System.out.println(key + " : " + map.get(key));
+		}
+		
+		System.out.println("==============================");
+		// value排序(通用)
+		Map<String, String> map2 = new TreeMap<String, String>();
+		map2.put("f", "f");
+		map2.put("a", "c");
+		map2.put("b", "b");
+		map2.put("c", "a");
+		map2.put("d", "d");
+		// 通过ArrayList构造函数把map.entrySet()转换成list
+		List<Map.Entry<String, String>> list2 = new ArrayList<Map.Entry<String, String>>(map2.entrySet());
+		Collections.sort(list2, new Comparator<Map.Entry<String, String>>() {
+			@Override
+			public int compare(Entry<String, String> o1, Entry<String, String> o2) {
+				// 升序
+				return o1.getValue().compareTo(o2.getValue());
+//				return o2.getValue().compareTo(o1.getValue());
+			}
+		});
+		Iterator<Entry<String, String>> iterator = list2.iterator();
+		Map.Entry<String, String> entry;
+		while (iterator.hasNext()) {
+			entry = iterator.next();
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		Map<String, String> map3 = new TreeMap<String, String>();
+		map3.put("f", "f");
+		map3.put("a", "c");
+		map3.put("b", "b");
+		map3.put("c", "a");
+		map3.put("d", "d");
+		map3.put("e", "e");
+ 
+		System.out.println("==============================");
+        // 通过ArrayList构造函数把map.entrySet()转换成list
+        List<Map.Entry<String, String>> list3 = new ArrayList<Map.Entry<String, String>>(map3.entrySet());
+        Comparator valueComparator =  new Comparator<Map.Entry<String, String>>() {
+            public int compare(Map.Entry<String, String> mapping1, Map.Entry<String, String> mapping2) {
+//                return mapping1.getValue().compareTo(mapping2.getValue());
+            	//降序
+            	return mapping2.getValue().compareTo(mapping1.getValue());
+            }
+        };
+        // 通过比较器实现比较排序
+        Collections.sort(list3, valueComparator);
+ 
+        for (Map.Entry<String, String> entry3 : list3) {
+            System.out.println(entry3.getKey() + " ：" + entry3.getValue());
+        }
+		
 	}
 }
