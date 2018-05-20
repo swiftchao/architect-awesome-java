@@ -5,18 +5,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-public class Set {
-	public static void main(String[] args) {
-		// testHashSet();
-		// testHashSet02();
-		// testTreeSet();
-//		testTreeSet02();
-		testTreeSet03();
-	}
-
-	private static void testHashSet() {
+public class MySet {
+	public static void	traversalHashSetByIteratorOfString() {
 		// set 集合存和取的顺序不一致
-		HashSet hashSet = new HashSet();
+		HashSet<String> hashSet = new HashSet<String>();
 		hashSet.add("世界军事");
 		hashSet.add("兵器知识");
 		hashSet.add("舰船知识");
@@ -30,15 +22,15 @@ public class Set {
 		System.out.println(hashSet.size());
 		System.out.println(hashSet);
 		// [舰船知识, 世界军事, 兵器知识]
-		Iterator it = hashSet.iterator();
+		Iterator<String> it = hashSet.iterator();
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
 	}
 
-	private static void testHashSet02() {
+	public static void traversalHashSetByIteratorOfPerson() {
 		// set 集合存和取的顺序不一致
-		HashSet hashSet = new HashSet();
+		HashSet<Person> hashSet = new HashSet<Person>();
 		hashSet.add(new Person("jack", 20));
 		hashSet.add(new Person("rose", 20));
 		hashSet.add(new Person("hmm", 20));
@@ -51,15 +43,15 @@ public class Set {
 		System.out.println(add);
 		System.out.println(hashSet.size());
 		System.out.println(hashSet);
-		Iterator it = hashSet.iterator();
+		Iterator<Person> it = hashSet.iterator();
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
 	}
 
-	private static void testTreeSet() {
+	public static void traversalTreeSetByIteratorOfString() {
 		// set 集合存和取的顺序不一致
-		TreeSet ts = new TreeSet();
+		TreeSet<String> ts = new TreeSet<String>();
 		ts.add("ccc");
 		ts.add("aaa");
 		ts.add("ddd");
@@ -71,15 +63,15 @@ public class Set {
 		System.out.println(add);
 		System.out.println(ts.size());
 		System.out.println(ts);
-		Iterator it = ts.iterator();
+		Iterator<String> it = ts.iterator();
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
 	}
 
-	private static void testTreeSet02() {
+	public static void traversalTreeSetByIteratorOfPerson2() {
 		// set 集合存和取的顺序不一致
-		TreeSet ts = new TreeSet();
+		TreeSet<Person2> ts = new TreeSet<Person2>();
 		ts.add(new Person2("aa", 20, "男"));
 		ts.add(new Person2("bb", 18, "女"));
 		ts.add(new Person2("cc", 17, "男"));
@@ -93,15 +85,15 @@ public class Set {
 		System.out.println(add);
 		System.out.println(ts.size());
 		System.out.println(ts);
-		Iterator it = ts.iterator();
+		Iterator<Person2> it = ts.iterator();
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
 	}
 
-	private static void testTreeSet03() {
+	public static void traversalTreeSetByIteratorOfBook() {
 		// set 集合存和取的顺序不一致
-		TreeSet ts = new TreeSet(new MyComparator());
+		TreeSet<Book> ts = new TreeSet<Book>(new MyComparator());
 		ts.add(new Book("think in java", 100));
 		ts.add(new Book("java 核心技术", 75));
 		ts.add(new Book("现代操作系统", 50));
@@ -116,13 +108,13 @@ public class Set {
 		System.out.println(add);
 		System.out.println(ts.size());
 		System.out.println(ts);
-		Iterator it = ts.iterator();
+		Iterator<Book> it = ts.iterator();
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
 	}
 	
-	static class MyComparator implements Comparator {
+	static class MyComparator implements Comparator<Object> {
 
 		@Override
 		public int compare(Object o1, Object o2) {
@@ -203,7 +195,7 @@ public class Set {
 		}
 	}
 
-	static class Person2 implements Comparable {
+	static class Person2 implements Comparable<Object> {
 		private String name;
 		private int age;
 		private String gender;

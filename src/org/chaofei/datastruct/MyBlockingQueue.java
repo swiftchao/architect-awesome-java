@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class BlockingQueueTest {
+public class MyBlockingQueue {
 	/**
 	 * 定义装苹果的篮子
 	 */
@@ -77,9 +77,5 @@ public class BlockingQueueTest {
 		} catch (InterruptedException e) {
 		}
 		service.shutdownNow();
-	}
-	
-	public static void main(String[] args) {
-		BlockingQueueTest.testBasket();
 	}
 }
