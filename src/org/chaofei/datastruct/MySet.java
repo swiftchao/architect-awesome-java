@@ -5,16 +5,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-public class Set {
-	public static void main(String[] args) {
-		// testHashSet();
-		// testHashSet02();
-		// testTreeSet();
-//		testTreeSet02();
-		testTreeSet03();
-	}
-
-	private static void testHashSet() {
+public class MySet {
+	public static void	traversalHashSetByIteratorOfString() {
 		// set 集合存和取的顺序不一致
 		HashSet hashSet = new HashSet();
 		hashSet.add("世界军事");
@@ -36,7 +28,7 @@ public class Set {
 		}
 	}
 
-	private static void testHashSet02() {
+	public static void traversalHashSetByIteratorOfPerson() {
 		// set 集合存和取的顺序不一致
 		HashSet hashSet = new HashSet();
 		hashSet.add(new Person("jack", 20));
@@ -57,7 +49,7 @@ public class Set {
 		}
 	}
 
-	private static void testTreeSet() {
+	public static void traversalTreeSetByIteratorOfString() {
 		// set 集合存和取的顺序不一致
 		TreeSet ts = new TreeSet();
 		ts.add("ccc");
@@ -77,7 +69,7 @@ public class Set {
 		}
 	}
 
-	private static void testTreeSet02() {
+	public static void traversalTreeSetByIteratorOfPerson2() {
 		// set 集合存和取的顺序不一致
 		TreeSet ts = new TreeSet();
 		ts.add(new Person2("aa", 20, "男"));
@@ -99,7 +91,7 @@ public class Set {
 		}
 	}
 
-	private static void testTreeSet03() {
+	public static void traversalTreeSetByIteratorOfBook() {
 		// set 集合存和取的顺序不一致
 		TreeSet ts = new TreeSet(new MyComparator());
 		ts.add(new Book("think in java", 100));

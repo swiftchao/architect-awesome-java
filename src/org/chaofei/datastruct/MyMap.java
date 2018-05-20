@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.TreeMap;
 import java.util.UUID;
 
-public class MapTest {
+public class MyMap {
 	static int hashMapW = 0;
 	static int hashMapR = 0;
     static int linkMapW = 0;
@@ -24,16 +24,9 @@ public class MapTest {
     static int hashTableW = 0;
     static int hashTableR = 0;
 	
-	public static void main(String[] args) {
-//		testAllMapRW();
-//		testInitMap();
-//		testTraversal();
-		testMapSort();
-	}
-
-	private static void testAllMapRW() {
+	public static void testAllMapRW() {
 		for (int i = 0; i < 10; ++i) {
-			MapTest map = new MapTest();
+			MyMap map = new MyMap();
 			map.testMapRW(10 * 10000);
 			System.out.println();
 		}
