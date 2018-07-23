@@ -12,8 +12,17 @@ public class MyLinkedStackApplication {
 			case '(' : 
 				myLinkedStack.push(subExpressChar + "");
 				break;
+			case ')' :
+				if (myLinkedStack.isEmpty() || !myLinkedStack.pop().equals("(")) {
+					return false;
+				}
 			}
 		}
-		return false;
+		//最后检测是否为空,为空则检测通过
+		if (myLinkedStack.isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
